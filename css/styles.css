@@ -1,8 +1,15 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
+
 /* colours */
 :root{
   --primary: #FFE9D2;
   --secondary: #FFE1C4;
   --title: #FF8816;
+}
+
+body{
+  font-family: "Montserrat", sans-serif;
 }
 
 /* layout styles */
@@ -25,9 +32,23 @@ nav .sidenav-trigger{
 .candidates{
   margin-top: 20px;
 }
+
+.candidates .panel-logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.candidates .panel-logo img{
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+}
+
 .candidates .panel-title h2{
 font-size: 1.2rem;
 text-align: center;
+margin-top: 0px;
 
 }
 .card-panel.candidate{
@@ -42,10 +63,11 @@ text-align: center;
 .candidate img{
   grid-area: image;
   max-width: 60px;
+  margin: auto;
 }
 .candidate-details{
   grid-area: details;
-  margin-top: 6px;
+  margin-left: 5px;
 }
 .candidate-delete{
   grid-area: delete;
@@ -64,6 +86,7 @@ text-align: center;
 }
 
 .center{
+  margin: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,6 +100,8 @@ text-align: center;
   font-weight: 700;
   transition: 0.4s;
   box-shadow: none;
+  font-family: "Montserrat", sans-serif;
+
 }
 
 .voting-btn:hover,
@@ -93,7 +118,7 @@ text-align: center;
   align-items: center;
 }
 
-.center-btn .scan-btn{
+.scan-btn{
   border: 0px;
   border-radius: 10px;
   background-color: var(--primary);
@@ -101,10 +126,73 @@ text-align: center;
   font-weight: 700;
   transition: 0.4s;
   box-shadow: none;
+  font-family: "Montserrat", sans-serif;
 }
 
 .scan-btn:hover,
 .scan-btn:focus{
+  color: var(--title);
+  background-color: var(--secondary);
+  box-shadow: 0px 2px 5px #0a0a0a27;
+}
+
+.change-cam-btn{
+  border: 0px;
+  border-radius: 10px;
+  background-color: var(--primary);
+  color: var(--title);
+  font-weight: 700;
+  transition: 0.4s;
+  font-size: 0.8rem;
+  box-shadow: none;
+  margin: 2px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.change-cam-btn:hover,
+.change-cam-btn:focus{
+  color: var(--title);
+  background-color: var(--secondary);
+  box-shadow: 0px 2px 5px #0a0a0a27;
+}
+
+.preview{
+  width: 200px;
+  height: 200px;
+}
+
+.note{
+  background-color: var(--primary);
+  border-radius: 10px;
+}
+
+.note p{
+  text-align: center;
+}
+
+.note p, 
+.note span{
+  color: var(--title);
+}
+
+.note span{
+  font-weight: 800;
+}
+
+.konfirm-btn{
+  border: 0px;
+  border-radius: 10px;
+  background-color: var(--primary);
+  color: var(--title);
+  font-weight: 700;
+  transition: 0.4s;
+  font-size: 0.9rem;
+  box-shadow: none;
+  font-family: "Montserrat", sans-serif;
+}
+
+.konfirm-btn:hover,
+.konfirm-btn:focus{
   color: var(--title);
   background-color: var(--secondary);
   box-shadow: 0px 2px 5px #0a0a0a27;

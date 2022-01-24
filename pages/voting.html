@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -44,24 +45,80 @@
 
   <!-- content -->
   <div class="container grey-text">
-    <h5 class="center">Silahkan Scan Barcode</h5>
+    <h5 style="display: none;" class="title-scan center">Silahkan Scan Barcode</h5>
+    <div class="center group-qrcode">
+      <video style="display: none;" id="preview" class="preview"></video>
+    </div>
+    <div style="display: none;" class="btn-group btn-group-toggle mb-5 center" data-toggle="buttons">
+      <label class="btn change-cam-btn active">
+        <input type="radio" name="options" value="1" autocomplete="off" checked> Front Camera
+      </label>
+      <label class="btn change-cam-btn">
+        <input type="radio" name="options" value="2" autocomplete="off"> Back Camera
+      </label>
+    </div>
     <div class="center-btn">
-      <a href="#" class="btn btn-small scan-btn">Scan Barcode</a>
+      <button class="btn btn-small scan-btn">Scan Barcode</button>
+    </div>
+    <div style="display: none;" class="note">
+      <p>Anda Memilih No. Urut <span id="result"></span> Sebagai Ketua Osis SMA 2 Gowa
+        Selanjutnya.</p>
+    </div>
+    <div class="center-btn">
+      <button style="display: none;" class="btn btn-small konfirm-btn">Konfirmasi</button>
     </div>
   </div>
 
   <script src="../js/app.js"></script>
   <script src="../js/ui.js"></script>
-  <script src="../js/html5-qrcode.min.js"></script>
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/instascan.min.js"></script>
   <script>
-    function onScanSuccess(decodedText, decodedResult) {
-      console.log(`Scan result: ${decodedText}`, decodedResult);
-      html5QrcodeScanner.clear();
-    }
 
-    var html5QrcodeScanner = new Html5QrcodeScanner(
-      "reader", { fps: 10, qrbox: 250 });
-    html5QrcodeScanner.render(onScanSuccess);
+    $('.scan-btn').click(function () {
+      $('.preview').show('slow');
+      $('.title-scan').show('slow');
+      $('.btn-group').show('slow');
+      $('.scan-btn').hide('1');
+    });
+
+    let scanner = new Instascan.Scanner({
+      video: document.getElementById('preview'),
+      mirror: true,
+    });
+    scanner.addListener('scan', function (content) {
+      $("#result").text(content);
+      $('.konfirm-btn').show('slow');
+      $('.note').show('slow');
+      $('.preview').hide('1');
+      $('.title-scan').hide('1');
+      $('.btn-group').hide('1');
+
+    });
+    Instascan.Camera.getCameras().then(function (cameras) {
+      if (cameras.length > 0) {
+        scanner.start(cameras[0]);
+        $('[name="options"]').on('change', function () {
+          if ($(this).val() == 1) {
+            if (cameras[0] != "") {
+              scanner.start(cameras[0]);
+            } else {
+              alert('No Front camera found!');
+            }
+          } else if ($(this).val() == 2) {
+            if (cameras[1] != "") {
+              scanner.start(cameras[1]);
+            } else {
+              alert('No Back camera found!');
+            }
+          }
+        });
+      } else {
+        console.error('No cameras found.');
+      }
+    }).catch(function (e) {
+      console.error(e);
+    });
   </script>
 </body>
 
