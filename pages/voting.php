@@ -1,3 +1,4 @@
+<?php include("config.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,7 +66,11 @@
         Selanjutnya.</p>
     </div>
     <div class="center-btn">
-      <button style="display: none;" class="btn btn-small konfirm-btn">Konfirmasi</button>
+      <form action="save-vote.php" method="POST">
+        <input type="hidden" name="dataValue" id="dataValue" value="">
+        <button style="display: none;" name="confirm" class="btn btn-small konfirm-btn">Konfirmasi</button>
+        <a style="display: none;" href="voting.php" class="btn btn-small konfirm-btn">Ubah Pilihan</a>
+      </form>
     </div>
   </div>
 
@@ -74,20 +79,28 @@
   <script src="../js/jquery.min.js"></script>
   <script src="../js/instascan.min.js"></script>
   <script>
-
-    $('.scan-btn').click(function () {
+    $('.scan-btn').click(function() {
       $('.preview').show('slow');
       $('.title-scan').show('slow');
       $('.btn-group').show('slow');
       $('.scan-btn').hide('1');
     });
 
+
     let scanner = new Instascan.Scanner({
       video: document.getElementById('preview'),
-      mirror: true,
+      mirror: false,
+      scanPeriod: 1
     });
-    scanner.addListener('scan', function (content) {
+
+    $('.konfirm-btn').click(function() {
+      const val = document.querySelector('#dataValue').value;
+      console.log(val);
+    })
+
+    scanner.addListener('scan', function(content) {
       $("#result").text(content);
+      $('#dataValue').val(content)
       $('.konfirm-btn').show('slow');
       $('.note').show('slow');
       $('.preview').hide('1');
@@ -95,10 +108,11 @@
       $('.btn-group').hide('1');
 
     });
-    Instascan.Camera.getCameras().then(function (cameras) {
+
+    Instascan.Camera.getCameras().then(function(cameras) {
       if (cameras.length > 0) {
         scanner.start(cameras[0]);
-        $('[name="options"]').on('change', function () {
+        $('[name="options"]').on('change', function() {
           if ($(this).val() == 1) {
             if (cameras[0] != "") {
               scanner.start(cameras[0]);
@@ -116,7 +130,7 @@
       } else {
         console.error('No cameras found.');
       }
-    }).catch(function (e) {
+    }).catch(function(e) {
       console.error(e);
     });
   </script>
