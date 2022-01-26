@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+include("../config.php");
+$sql_1 = "SELECT * FROM result WHERE pilihan='1'";
+$query_1 = mysqli_query($db, $sql_1);
+$no_1 = mysqli_num_rows($query_1);
+
+$sql_2 = "SELECT * FROM result WHERE pilihan='2'";
+$query_2 = mysqli_query($db, $sql_2);
+$no_2 = mysqli_num_rows($query_2);
+
+$sql_3 = "SELECT * FROM result WHERE pilihan='3'";
+$query_3 = mysqli_query($db, $sql_3);
+$no_3 = mysqli_num_rows($query_3);
+
+$sql_4 = "SELECT * FROM result WHERE pilihan='4'";
+$query_4 = mysqli_query($db, $sql_4);
+$no_4 = mysqli_num_rows($query_4);
+?>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +28,6 @@
   <!-- materialize icons, css & js -->
   <link type="text/css" href="../css/materialize.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link type="text/css" href="../css/font-awesome.css" rel="stylesheet">
   <link type="text/css" href="../css/styles.css" rel="stylesheet">
   <link rel="manifest" href="../manifest.json">
   <!-- IOS Support -->
@@ -48,20 +66,45 @@
 
   <!-- content -->
   <div class="container grey-text">
-    <h5 class="center">About Voting App</h5>
-    <p>This application was made for the election of the student council president and student council vice president of
-      the OSIS SMA Negeri 2 Gowa</p>
-    <p>This App Develope by Codebreak;</p>
-    <span class="instagram-btn">
-      <a href="https://www.instagram.com/x000000exp/">
-        <i class="fab fa-instagram"><span>x000000exp</span></i>
-      </a>
-    </span>
-  </div>
+    <h5 class="title-scan center">Hasil Voting</h5>
+    <div class="d-flex flex-wrap">
+      <div class="card-panel candidate white row">
+        <img src="../img/1.png" alt="candidate thumb">
+        <div class="candidate-details">
+          <div class="candidate-title">No. Urut 1</div>
+          <div class="candidate-voting">Suara : <?= $no_1; ?></div>
+        </div>
+      </div>
 
+      <div class="card-panel candidate white row">
+        <img src="../img/2.png" alt="candidate thumb">
+        <div class="candidate-details">
+          <div class="candidate-title">No. Urut 2</div>
+          <div class="candidate-voting">Suara : <?= $no_2; ?></div>
+        </div>
+      </div>
+
+      <div class="card-panel candidate white row">
+        <img src="../img/3.png" alt="candidate thumb">
+        <div class="candidate-details">
+          <div class="candidate-title">No. Urut 3</div>
+          <div class="candidate-voting">Suara : <?= $no_3; ?></div>
+        </div>
+      </div>
+
+      <div class="card-panel candidate white row">
+        <img src="../img/4.png" alt="candidate thumb">
+        <div class="candidate-details">
+          <div class="candidate-title">No. Urut 4</div>
+          <div class="candidate-voting">Suara : <?= $no_4; ?></div>
+        </div>
+      </div>
+    </div>
+  </div>
   <script type="text/javascript" src="../js/materialize.min.js"></script>
   <script type="text/javascript" src="../js/app.js"></script>
   <script type="text/javascript" src="../js/ui.js"></script>
+  <script type="text/javascript" src="../js/jquery.min.js"></script>
 </body>
 
 </html>

@@ -33,6 +33,142 @@ nav .sidenav-trigger{
   margin-top: 20px;
 }
 
+.notif.notif-success{
+  z-index: 100;
+  background-color: #9bffb1;
+  padding: 20px 40px;
+  width: 320px;
+  right: 10px;
+  top: 10px; 
+  overflow: hidden;
+  position: absolute;
+  border-radius: 4px;
+  border-left: 8px solid #02ff74;
+}
+
+.notif-success.info-icon{
+  position: absolute;
+  left: 20px;
+  top: 30px;
+  transform: translateY(-50%);
+  color: #00ce4f;
+  font-size: 1.6rem;
+}
+
+.notif-success.msg{
+  padding: 0 10px;
+  font-size: 1rem;
+  color: #02ff63;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+}
+
+.notif-success.close-btn{
+  position: absolute;
+  right: 0px;
+  top: 30px;
+  transform: translateY(-50%);
+  background-color: #80ffa0;
+  padding: 20px 18px;
+}
+
+.notif-success.close-btn:hover{
+  background: #66ff8c;
+}
+
+.notif-success.close-btn .fa-times{
+  color: #02ff4e;
+  font-size: 22px;
+  line-height: 40px;
+}
+
+.notif.notif-failed{
+  z-index: 100;
+  background-color: #ff9b9b;
+  padding: 20px 40px;
+  width: 320px;
+  right: 10px;
+  top: 10px; 
+  overflow: hidden;
+  position: absolute;
+  border-radius: 4px;
+  border-left: 8px solid #ff0202;
+}
+
+.notif-failed .info-icon{
+  position: absolute;
+  left: 20px;
+  top: 30px;
+  transform: translateY(-50%);
+  color: #ff0202;
+  font-size: 1.6rem;
+}
+
+.notif-failed .msg{
+  padding: 0 10px;
+  font-size: 1rem;
+  color: #ff0202;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+}
+
+.notif-failed .close-btn{
+  position: absolute;
+  right: 0px;
+  top: 30px;
+  transform: translateY(-50%);
+  background-color: #ff8080;
+  padding: 20px 18px;
+}
+
+.notif-failed .close-btn:hover{
+  background: #ff6666;
+}
+
+.notif-failed .close-btn .fa-times{
+  color: #ff0202;
+  font-size: 22px;
+  line-height: 40px;
+}
+
+.notif.show{
+  animation: show_slide 1s ease forwards;  
+}
+
+@keyframes show_slide{
+  0%{
+    transform: translateX(100%);
+  }
+  40%{
+    transform: translateX(-10%);
+  }
+  80%{
+    transform: translateX(0%);
+  }
+  100%{
+    transform: translateX(-2%);
+  }
+}
+
+.notif.hide{
+  animation: hide_slide 1s ease forwards;  
+}
+
+@keyframes hide_slide{
+  0%{
+    transform: translateX(-10%);
+  }
+  40%{
+    transform: translateX(0%);
+  }
+  80%{
+    transform: translateX(-10%);
+  }
+  100%{
+    transform: translateX(100%);
+  }
+}
+
 .candidates .panel-logo{
   display: flex;
   justify-content: center;
@@ -83,6 +219,11 @@ margin-top: 0px;
 }
 .candidate-description{
   font-size: 0.8em;
+}
+
+.candidate-voting{
+  font-weight: 800;
+  font-size: 1.4rem;
 }
 
 .center{
@@ -196,4 +337,81 @@ margin-top: 0px;
   color: var(--title);
   background-color: var(--secondary);
   box-shadow: 0px 2px 5px #0a0a0a27;
+}
+
+.notif.voter-failed{
+  z-index: 100;
+  background-color: #ff9b9b;
+  padding: 20px 40px;
+  width: 320px;
+  right: 10px;
+  top: 10px; 
+  overflow: hidden;
+  position: absolute;
+  border-radius: 4px;
+  border-left: 8px solid #ff0202;
+}
+
+.voter-failed .info-icon{
+  position: absolute;
+  left: 20px;
+  top: 41px;
+  transform: translateY(-50%);
+  color: #ff0202;
+  font-size: 1.6rem;
+}
+
+.voter-failed .msg{
+  padding: 0 10px;
+  font-size: 1rem;
+  color: #ff0202;
+  font-weight: 500;
+  float: left;
+  font-family: "Montserrat", sans-serif;
+}
+
+.voter-failed .close-btn{
+  position: absolute;
+  right: 0px;
+  top: 41px;
+  transform: translateY(-50%);
+  background-color: #ff8080;
+  padding: 20px 18px;
+}
+
+.voter-failed .close-btn:hover{
+  background: #ff6666;
+}
+
+.voter-failed .close-btn .fa-times{
+  color: #ff0202;
+  font-size: 22px;
+  line-height: 40px;
+}
+
+.container .instagram-btn{
+  background-color: var(--primary);
+  border-radius: 4px;
+  padding: 4px 8px;
+  transition: 0.4s;
+}
+
+.instagram-btn a{
+  color: var(--title);
+  font-weight: 700;
+  transition: 0.4s;
+}
+
+.instagram-btn span{
+  padding-left: 5px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.container .instagram-btn:hover{
+  box-shadow: 2px 3px 2px rgba(104, 104, 104, 0.233);
+  background-color: var(--title);
+}
+
+.instagram-btn a:hover{
+  color: var(--primary);
 }

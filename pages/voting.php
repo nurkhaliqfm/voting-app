@@ -1,4 +1,3 @@
-<?php include("config.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,12 +10,13 @@
   <link type="text/css" href="../css/materialize.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" href="../css/styles.css" rel="stylesheet">
-  <script type="text/javascript" src="../js/materialize.min.js"></script>
   <link rel="manifest" href="../manifest.json">
   <!-- IOS Support -->
   <link rel="apple-touch-icon" href="../img/icons/icon-96x96.png">
   <meta name="apple-mobile-web-app-status-bar" content="#aa7700">
   <meta name="theme-color" content="#FFE1C4">
+  <!-- Fav Icon -->
+  <link rel="icon" type="image/x-icon" href="../img/codebreak.png">
 </head>
 
 <body class="grey lighten-4">
@@ -24,7 +24,7 @@
   <!-- top nav -->
   <nav class="z-depth-0">
     <div class="nav-wrapper container">
-      <a href="../index.html">Voting<span>App</span></a>
+      <a href="../index.php">Voting<span>App</span></a>
       <span class="right grey-text text-darken-1">
         <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
       </span>
@@ -34,7 +34,8 @@
   <!-- side nav -->
   <ul id="side-menu" class="sidenav side-menu">
     <li><a class="subheader">VOTING<span style="font-weight: 900;">APP</a></li>
-    <li><a href="../index.html" class="waves-effect">Home</a></li>
+    <li><a href="../index.php" class="waves-effect">Home</a></li>
+    <li><a href="voting-result.php" class="waves-effect">Hasil Suara</a></li>
     <li><a href="about.html" class="waves-effect">About</a></li>
     <li>
       <div class="divider"></div>
@@ -68,17 +69,19 @@
     <div class="center-btn">
       <form action="save-vote.php" method="POST">
         <input type="hidden" name="dataValue" id="dataValue" value="">
+        <input type="hidden" name="voterId" value="<?= $_GET['voter']; ?>">
         <button style="display: none;" name="confirm" class="btn btn-small konfirm-btn">Konfirmasi</button>
-        <a style="display: none;" href="voting.php" class="btn btn-small konfirm-btn">Ubah Pilihan</a>
+        <a style="display: none;" href="voting.php?voter=<?= $_GET['voter']; ?>" class="btn btn-small konfirm-btn">Ubah Pilihan</a>
       </form>
     </div>
   </div>
 
-  <script src="../js/app.js"></script>
-  <script src="../js/ui.js"></script>
-  <script src="../js/jquery.min.js"></script>
-  <script src="../js/instascan.min.js"></script>
-  <script>
+  <script type="text/javascript" src="../js/materialize.min.js"></script>
+  <script type="text/javascript" src="../js/app.js"></script>
+  <script type="text/javascript" src="../js/ui.js"></script>
+  <script type="text/javascript" src="../js/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/instascan.min.js"></script>
+  <script type="text/javascript">
     $('.scan-btn').click(function() {
       $('.preview').show('slow');
       $('.title-scan').show('slow');
